@@ -49,10 +49,7 @@
         <div class="min-h-6 mb-0.5 block pl-0">
           <input navbarFixed class="rounded-10 duration-250 ease-soft-in-out after:rounded-circle after:shadow-soft-2xl after:duration-250 h-5-em relative {{ (Request::is('rtl') ? 'checked:after:-translate-x-5.25 float-right mt-1 mr-auto bg-right after:-translate-x-px' : 'checked:after:translate-x-5.25 float-left mt-1 ml-auto bg-left after:translate-x-px') }} w-10 cursor-pointer appearance-none border border-solid border-gray-200 bg-slate-800/10 bg-none bg-contain  bg-no-repeat align-top transition-all after:absolute after:top-px after:h-4 after:w-4 after:bg-white after:content-[''] checked:border-slate-800/95 checked:bg-slate-800/95 checked:bg-none checked:bg-right" type="checkbox" />
         </div>
-        <hr class="h-px bg-transparent bg-gradient-horizontal-dark sm:my-6" />
-        <a class="inline-block w-full px-6 py-3 mb-4 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer leading-pro text-size-xs ease-soft-in hover:shadow-soft-xs hover:scale-102 active:opacity-85 tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-dark-gray" href="https://www.creative-tim.com/product/soft-ui-dashboard-tall" target="_blank">Free Download</a>
-        <a class="inline-block w-full px-6 py-3 mb-4 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer active:shadow-soft-xs hover:scale-102 active:opacity-85 leading-pro text-size-xs ease-soft-in tracking-tight-soft bg-150 bg-x-25 border-slate-700 text-slate-700 hover:bg-transparent hover:text-slate-700 hover:shadow-none active:bg-slate-700 active:text-white active:hover:bg-transparent active:hover:text-slate-700 active:hover:shadow-none" href="https://www.creative-tim.com/learning-lab/tailwind/html/quick-start/soft-ui-dashboard/" target="_blank">View documentation</a>
-
+    
         <div class="w-full text-center">
           <a class="github-button" href="https://github.com/creativetimofficial/soft-ui-dashboard-tall" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star creativetimofficial/soft-ui-dashboard-tall on GitHub" target="_blank">Star</a>
           <h6 class="mt-4">Thank you for sharing!</h6>
