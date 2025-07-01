@@ -13,10 +13,11 @@ return new class extends Migration
             $table->foreignId('class_id')->constrained('school_classes')->onDelete('cascade');
             $table->foreignId('subject_id')->constrained()->onDelete('cascade');
             $table->foreignId('teacher_id')->constrained()->onDelete('cascade');
-            $table->enum('day', ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']);
+            $table->enum('day', ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi']);
             $table->time('start_time');
             $table->time('end_time');
             $table->string('room', 50);
+            $table->integer('coefficient')->default(1);
             $table->timestamps();
         });
     }

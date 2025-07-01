@@ -2,10 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\SchoolClass;
+use App\Models\Student;
+use App\Models\Subject;
+use App\Models\Teacher;
+use App\Models\Schedule;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
-
-use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,11 +18,40 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->create([
-            'name' => 'Alec Thompson',
-            'email' => 'admin@softui.com',
-            'password' => Hash::make('secret'),
-            'about' => "Hi, I’m Alec Thompson, Decisions: If you can’t decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality).",
-        ]);
+        // Créer 6 classes (une par spécialité)
+        $classes = SchoolClass::factory(6)->create();
+
+        // Créer 12 enseignants
+        $teachers = Teacher::factory(12)->create();
+
+        // Créer 14 matières
+        $subjects = Subject::factory(14)->create();
+
+        // Attribuer 2-3 matières à chaque enseignant
+        foreach ($teachers as $teacher) {
+            $teacher->subjects()->attach(
+                $subjects->random(rand(2, 3))->pluck('id')->toArray()
+            );
+        }
+
+        // Créer 30 étudiants par classe (180 au total)
+        foreach ($classes as $class) {
+            Student::factory(30)->create([
+                'class_id' => $class->id
+            ]);
+        }
+
+        // Créer 4 créneaux horaires par classe
+        foreach ($classes as $class) {
+            $classTeachers = $teachers->random(4);
+            foreach ($classTeachers as $index => $teacher) {
+                $subject = $teacher->subjects->random();
+                Schedule::factory()->create([
+                    'class_id' => $class->id,
+                    'teacher_id' => $teacher->id,
+                    'subject_id' => $subject->id,
+                ]);
+            }
+        }
     }
 }

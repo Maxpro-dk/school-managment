@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Schedule extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'class_id',
         'subject_id',
@@ -14,6 +17,7 @@ class Schedule extends Model
         'day',
         'start_time',
         'end_time',
+        'coefficient',
         'room',
     ];
 
