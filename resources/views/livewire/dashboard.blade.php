@@ -1,4 +1,12 @@
 <div class="flex flex-wrap -mx-3">
+    <div class="mb-4 p-6 bg-gradient-to-r from-blue-50 to-indigo-100">
+        <h5 class="text-2xl font-bold text-gray-800">
+             {{ get_greeting() }}
+        </h5>
+        <p class="text-gray-600 mt-2 text-sm">
+           {{ get_user_role_message() }}
+        </p>
+    </div>
     <!-- Statistiques -->
     <div class="w-full max-w-full px-3 mb-6">
         <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">

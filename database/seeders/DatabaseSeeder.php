@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
     {
         // Créer l'utilisateur admin
         User::create([
-            'name' => 'Admin User',
+            'name' => 'Chedrac',
             'email' => 'admin@softui.com',
             'password' => Hash::make('secret'),
         ]);

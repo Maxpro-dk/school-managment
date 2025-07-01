@@ -11,9 +11,14 @@
         </li>
         <li
           class="text-size-sm pl-2 capitalize leading-normal text-slate-700 {{ (Request::is('rtl') ? 'before:float-right before:pl-2' : 'before:float-left before:pr-2') }} before:text-gray-600 before:content-['/']"
-          aria-current="page">{{ str_replace('-', ' ', Request::path()) }}</li>
+          aria-current="page">
+          {{ route_name()}}
+       
+        </li>
       </ol>
-      <h6 class="mb-0 font-bold capitalize">{{ str_replace('-', ' ', Request::path()) }}</h6>
+      <h6 class="mb-0 font-bold capitalize">
+        {{ route_name()}}
+      </h6>
     </nav>
 
     <div
