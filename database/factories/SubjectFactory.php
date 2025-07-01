@@ -34,7 +34,7 @@ class SubjectFactory extends Factory
         return [
             'name' => $subjectName,
             'code' => $code . $this->faker->numberBetween(100, 999),
-            'coefficient' => $this->faker->randomElement([1, 2, 3, 4, 5]),
+            'description' => $this->faker->sentence(),
         ];
     }
 } 

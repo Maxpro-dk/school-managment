@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 100);
             $table->string('code', 10)->unique();
-            $table->integer('coefficient')->default(1);
+            $table->string('description');
             $table->timestamps();
         });
     }

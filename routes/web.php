@@ -7,17 +7,15 @@ use App\Http\Livewire\Auth\ResetPassword;
 use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Dashboard;
-use App\Http\Livewire\Billing;
 use App\Http\Livewire\Profile;
-use App\Http\Livewire\Tables;
-use App\Http\Livewire\StaticSignIn;
-use App\Http\Livewire\StaticSignUp;
-use App\Http\Livewire\Rtl;
+use App\Http\Livewire\SchoolClasses;
+use App\Http\Livewire\Subjects;
+use App\Http\Livewire\Students;
+use App\Http\Livewire\Teachers;
 
 use App\Http\Livewire\LaravelExamples\UserProfile;
-use App\Http\Livewire\LaravelExamples\UserManagement;
-use App\Http\Livewire\VirtualReality;
-use Illuminate\Http\Request;
+use App\Http\Livewire\UserManagement;
+use App\Http\Livewire\Schedules;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +29,7 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-    return redirect('/login');
+    return redirect('/dashboard');
 });
 
 Route::middleware('guest')->group(function () {
@@ -44,13 +42,13 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
-    Route::get('/billing', Billing::class)->name('billing');
     Route::get('/profile', Profile::class)->name('profile');
-    Route::get('/tables', Tables::class)->name('tables');
-    Route::get('/static-sign-in', StaticSignIn::class)->name('sign-in');
-    Route::get('/static-sign-up', StaticSignUp::class)->name('static-sign-up');
-    Route::get('/rtl', Rtl::class)->name('rtl');
-    Route::get('/virtual-reality', VirtualReality::class)->name('virtual-reality');
+    Route::get('/classes', SchoolClasses::class)->name('classes');
+    Route::get('/subjects', Subjects::class)->name('subjects');
+    Route::get('/students', Students::class)->name('students');
+    Route::get('/teachers', Teachers::class)->name('teachers');
+    Route::get('/schedules', Schedules::class)->name('schedules');
+
     Route::get('/user-profile', UserProfile::class)->name('user-profile');
     Route::get('/user-management', UserManagement::class)->name('user-management');
 });

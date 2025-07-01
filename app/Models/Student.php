@@ -27,7 +27,7 @@ class Student extends Model
     ];
 
     // Relationships
-    public function class(): BelongsTo
+    public function schoolClass(): BelongsTo
     {
         return $this->belongsTo(SchoolClass::class, 'class_id');
     }

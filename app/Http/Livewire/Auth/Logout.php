@@ -7,6 +7,12 @@ use Livewire\Component;
 
 class Logout extends Component
 {
+    public $type="";
+
+     public function mount($type=""){
+        $this->type = $type;
+     }
+
     public function logout()
     {
         auth()->logout();

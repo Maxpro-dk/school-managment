@@ -7,7 +7,9 @@ use App\Models\Student;
 use App\Models\Subject;
 use App\Models\Teacher;
 use App\Models\Schedule;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,6 +20,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // Créer l'utilisateur admin
+        User::create([
+            'name' => 'Admin User',
+            'email' => 'admin@softui.com',
+            'password' => Hash::make('secret'),
+        ]);
+
         // Créer 6 classes (une par spécialité)
         $classes = SchoolClass::factory(6)->create();
 

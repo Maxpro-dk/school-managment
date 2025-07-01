@@ -9,7 +9,7 @@
             <a class="py-2.375 text-size-sm mr-4 ml-4 whitespace-nowrap font-bold lg:ml-0 
             
             {{ Request::is('static-sign-up') || Request::is('register') ? 'text-white' : 'text-slate-700' }}"
-                href="{{ url('dashboard') }}"> Soft UI Dashboard </a>
+                href="{{ url('dashboard') }}">  GESTION D'ECOLES </a>
             <button navbar-trigger
                 class="px-3 py-1 ml-2 leading-none transition-all bg-transparent border border-transparent border-solid rounded-lg shadow-none cursor-pointer text-size-lg ease-soft-in-out lg:hidden"
                 type="button" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
