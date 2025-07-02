@@ -15,29 +15,23 @@ class ScheduleFactory extends Factory
     public function definition()
     {
         $timeSlots = [
-            ['07:30', '10:30'],
-            ['10:45', '13:45'],
-            ['14:30', '17:30']
-        ];
-
-        $rooms = [
-            'Amphi A', 'Amphi B', 'Amphi C',
-            'Salle 101', 'Salle 102', 'Salle 103',
-            'Labo Info 1', 'Labo Info 2',
-            'Salle TP Physique', 'Salle TP Chimie'
+            ['08:00', '09:30'], // Première séance du matin
+            ['10:00', '11:30'], // Deuxième séance du matin
+            ['15:00', '16:30']  // Séance de l'après-midi
         ];
 
         $timeSlot = $this->faker->randomElement($timeSlots);
+        $class = SchoolClass::inRandomOrder()->first() ?? SchoolClass::factory()->create();
 
         return [
-            'class_id' => SchoolClass::factory(),
-            'subject_id' => Subject::factory(),
-            'teacher_id' => Teacher::factory(),
-            'day' => $this->faker->randomElement(['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi']),
+            'class_id' => $class->id,
+            'subject_id' => Subject::inRandomOrder()->first()->id ?? Subject::factory()->create()->id,
+            'teacher_id' => $class->teacher_id ?? Teacher::factory()->create()->id,
+            'day' => $this->faker->randomElement(['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi']),
             'start_time' => $timeSlot[0],
             'end_time' => $timeSlot[1],
-            'room' => $this->faker->randomElement($rooms),
-            'coefficient' => $this->faker->randomElement([1, 2, 3, 4]),
+            'room' => 'Salle ' . $class->name,
+            'coefficient' => $this->faker->randomElement([1, 2]), // Coefficients plus simples pour le primaire
         ];
     }
 } 

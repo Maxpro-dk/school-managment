@@ -96,10 +96,6 @@ class Subjects extends Component
     public function delete($id)
     {
         $subject = Subject::find($id);
-        if ($subject->teachers()->count() > 0) {
-            flash()->error('Impossible de supprimer cette matière car elle est assignée à des enseignants.');
-            return;
-        }
         $subject->delete();
         flash()->success('Matière supprimée avec succès.');
     }

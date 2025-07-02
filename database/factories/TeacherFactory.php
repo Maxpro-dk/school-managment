@@ -11,44 +11,21 @@ class TeacherFactory extends Factory
 
     public function definition()
     {
-        // Noms de famille béninois courants
-        $lastNames = [
-            'Adjavon', 'Ahoyo', 'Akplogan', 'Assogba', 'Dagba',
-            'Dossou', 'Gandaho', 'Houessou', 'Koudoro', 'Lokossou',
-            'Mensah', 'Nobime', 'Quenum', 'Sossa', 'Togbe'
+        $diplomas = [
+            'CAP', // Certificat d'Aptitude Pédagogique
+            'CEAP', // Certificat Élémentaire d'Aptitude Pédagogique
+            'BEPD', // Brevet d'Études Pédagogiques du Degré
+            'Licence en Sciences de l\'Education'
         ];
-
-        // Prénoms béninois courants
-        $firstNames = [
-            'Abiba', 'Abiola', 'Adebayo', 'Adeline', 'Adjoa',
-            'Akuavi', 'Alade', 'Ayodele', 'Boni', 'Cossi',
-            'Dossa', 'Fifamè', 'Folami', 'Koffi', 'Kokou'
-        ];
-
-        $titles = ['Dr.', 'Prof.', 'MC'];
-        $specialties = [
-            'Mathématiques et Informatique',
-            'Sciences Physiques',
-            'Génie Civil',
-            'Sciences Économiques',
-            'Droit Public',
-            'Droit Privé',
-            'Agronomie',
-            'Génie Mécanique',
-            'Sciences de Gestion',
-            'Sociologie'
-        ];
-
-        $firstName = $this->faker->unique()->randomElement($firstNames);
-        $lastName = $this->faker->unique()->randomElement($lastNames);
-        $title = $this->faker->randomElement($titles);
 
         return [
-            'first_name' => $firstName,
-            'last_name' => $lastName,
-            'email' => strtolower($firstName . '.' . $lastName . '.' . $this->faker->unique()->numberBetween(1, 999) . '@univ-benin.bj'),
-            'phone' => '+229 ' . $this->faker->numberBetween(40000000, 99999999),
-            'specialty' => $title . ' en ' . $this->faker->randomElement($specialties),
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
+            'email' => $this->faker->unique()->safeEmail(),
+            'phone' => $this->faker->phoneNumber(),
+            'diploma' => $this->faker->randomElement($diplomas),
+            'address' => $this->faker->address(),
+            'birth_date' => $this->faker->dateTimeBetween('-50 years', '-25 years')->format('Y-m-d'),
         ];
     }
-} 
+}

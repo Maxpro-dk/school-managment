@@ -16,9 +16,10 @@ class Student extends Model
         'birth_date',
         'gender',
         'registration_number',
-        'class_id',
-        'email',
-        'phone',
+        'school_class_id', // Changed from class_id to school_class_id for clarity
+        'tutor_name',
+        'tutor_phone',
+        'tutor_email',
         'address',
     ];
 
@@ -29,6 +30,6 @@ class Student extends Model
     // Relationships
     public function schoolClass(): BelongsTo
     {
-        return $this->belongsTo(SchoolClass::class, 'class_id');
+        return $this->belongsTo(SchoolClass::class, 'school_class_id');
     }
 } 

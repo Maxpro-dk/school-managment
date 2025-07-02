@@ -14,7 +14,9 @@ return new class extends Migration
             $table->string('last_name', 100);
             $table->string('email', 150)->unique();
             $table->string('phone', 20);
-            $table->text('specialty');
+            $table->text('diploma')->nullable();
+            $table->text('address')->nullable();
+            $table->date('birth_date')->nullable();
             $table->timestamps();
         });
     }
@@ -23,4 +25,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('teachers');
     }
-}; 
+};

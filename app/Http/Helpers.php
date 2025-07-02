@@ -12,9 +12,9 @@ if (!function_exists('route_name')) {
         $routeNames = [
             'dashboard' => 'Tableau de bord',
             'profile' => 'Profil',
-            'classes' => 'Classes',
+            'classes' => 'Classes scolaires',
             'subjects' => 'Matières',
-            'students' => 'Étudiants',
+            'students' => 'Liste des ecoliers',
             'teachers' => 'Enseignants',
             'schedules' => 'Emplois du temps',
             'user-profile' => 'Profil utilisateur',

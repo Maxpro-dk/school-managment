@@ -6,6 +6,7 @@ use App\Http\Livewire\Auth\ForgotPassword;
 use App\Http\Livewire\Auth\ResetPassword;
 use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Auth\Login;
+use App\Http\Livewire\ClassDetails;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Profile;
 use App\Http\Livewire\SchoolClasses;
@@ -44,6 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/profile', Profile::class)->name('profile');
     Route::get('/classes', SchoolClasses::class)->name('classes');
+    Route::get('/class-details/{classId}', ClassDetails::class)->name('class-details');
     Route::get('/subjects', Subjects::class)->name('subjects');
     Route::get('/students', Students::class)->name('students');
     Route::get('/teachers', Teachers::class)->name('teachers');

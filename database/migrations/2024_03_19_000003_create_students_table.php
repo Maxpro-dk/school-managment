@@ -15,9 +15,11 @@ return new class extends Migration
             $table->date('birth_date');
             $table->enum('gender', ['M', 'F']);
             $table->string('registration_number', 50)->unique();
-            $table->foreignId('class_id')->constrained('school_classes');
-            $table->string('email', 150)->nullable();
-            $table->string('phone', 20)->nullable();
+            $table->foreignId('school_class_id')->constrained('school_classes');
+            // tutor information
+            $table->string('tutor_name', 100)->nullable(); // Assuming a tutor relationship exists
+            $table->string('tutor_phone', 20)->nullable(); // Assuming a tutor relationship exists
+            $table->string('tutor_email', 150)->nullable();
             $table->text('address')->nullable();
             $table->timestamps();
         });

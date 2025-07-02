@@ -11,14 +11,11 @@ class Schedule extends Model
     use HasFactory;
 
     protected $fillable = [
-        'class_id',
+        'school_class_id',
         'subject_id',
-        'teacher_id',
         'day',
         'start_time',
         'end_time',
-        'coefficient',
-        'room',
     ];
 
     protected $casts = [
@@ -27,9 +24,9 @@ class Schedule extends Model
     ];
 
     // Relationships
-    public function class(): BelongsTo
+    public function schoolClass(): BelongsTo
     {
-        return $this->belongsTo(SchoolClass::class, 'class_id');
+        return $this->belongsTo(SchoolClass::class, 'school_class_id');
     }
 
     public function subject(): BelongsTo

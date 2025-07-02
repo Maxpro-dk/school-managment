@@ -13,6 +13,7 @@ return new class extends Migration
             $table->string('name', 100);
             $table->string('level', 50);
             $table->string('academic_year', 9);
+            $table->foreignId('teacher_id')->nullable()->constrained()->onDelete('set null');
             $table->timestamps();
         });
     }

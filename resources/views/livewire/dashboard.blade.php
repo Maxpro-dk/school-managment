@@ -1,31 +1,32 @@
 <div class="flex flex-wrap -mx-3">
-    <div class="mb-4 p-6 bg-gradient-to-r from-blue-50 to-indigo-100">
+    <div class="mb-4 p-6 bg-gradient-to-r from-blue-50 to-indigo-100 w-full">
         <h5 class="text-2xl font-bold text-gray-800">
-             {{ get_greeting() }}
+            Tableau de Bord
         </h5>
         <p class="text-gray-600 mt-2 text-sm">
-           {{ get_user_role_message() }}
+           {{ get_greeting()}}
         </p>
     </div>
+    
     <!-- Statistiques -->
     <div class="w-full max-w-full px-3 mb-6">
         <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
             <div class="flex-auto p-4">
                 <div class="flex flex-wrap -mx-3">
-                    <!-- Étudiants -->
+                    <!-- Écoliers -->
                     <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
                         <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
                             <div class="flex-auto p-4">
                                 <div class="flex flex-row -mx-3">
                                     <div class="flex-none w-2/3 max-w-full px-3">
                                         <div>
-                                            <p class="mb-0 font-sans font-semibold leading-normal text-size-sm">Étudiants</p>
+                                            <p class="mb-0 font-sans font-semibold leading-normal text-sm">Écoliers</p>
                                             <h5 class="mb-0 font-bold">{{ $totalStudents }}</h5>
                                         </div>
                                     </div>
                                     <div class="px-3 text-right basis-1/3">
-                                        <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-fuchsia">
-                                            <i class="fas fa-user-graduate text-size-lg relative top-3.5 text-white"></i>
+                                        <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-r from-purple-500 to-pink-500">
+                                            <i class="fas fa-user-graduate text-lg relative top-3.5 text-white"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -40,13 +41,13 @@
                                 <div class="flex flex-row -mx-3">
                                     <div class="flex-none w-2/3 max-w-full px-3">
                                         <div>
-                                            <p class="mb-0 font-sans font-semibold leading-normal text-size-sm">Professeurs</p>
+                                            <p class="mb-0 font-sans font-semibold leading-normal text-sm">Enseignants </p>
                                             <h5 class="mb-0 font-bold">{{ $totalTeachers }}</h5>
                                         </div>
                                     </div>
                                     <div class="px-3 text-right basis-1/3">
-                                        <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-fuchsia">
-                                            <i class="fas fa-chalkboard-teacher text-size-lg relative top-3.5 text-white"></i>
+                                        <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-r from-purple-500 to-pink-500">
+                                            <i class="fas fa-chalkboard-teacher text-lg relative top-3.5 text-white"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -61,13 +62,13 @@
                                 <div class="flex flex-row -mx-3">
                                     <div class="flex-none w-2/3 max-w-full px-3">
                                         <div>
-                                            <p class="mb-0 font-sans font-semibold leading-normal text-size-sm">Classes</p>
+                                            <p class="mb-0 font-sans font-semibold leading-normal text-sm">Classes</p>
                                             <h5 class="mb-0 font-bold">{{ $totalClasses }}</h5>
                                         </div>
                                     </div>
                                     <div class="px-3 text-right basis-1/3">
-                                        <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-fuchsia">
-                                            <i class="fas fa-school text-size-lg relative top-3.5 text-white"></i>
+                                        <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-r from-purple-500 to-pink-500">
+                                            <i class="fas fa-school text-lg relative top-3.5 text-white"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -82,13 +83,13 @@
                                 <div class="flex flex-row -mx-3">
                                     <div class="flex-none w-2/3 max-w-full px-3">
                                         <div>
-                                            <p class="mb-0 font-sans font-semibold leading-normal text-size-sm">Matières</p>
+                                            <p class="mb-0 font-sans font-semibold leading-normal text-sm">Matières</p>
                                             <h5 class="mb-0 font-bold">{{ $totalSubjects }}</h5>
                                         </div>
                                     </div>
                                     <div class="px-3 text-right basis-1/3">
-                                        <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-fuchsia">
-                                            <i class="fas fa-book text-size-lg relative top-3.5 text-white"></i>
+                                        <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-r from-purple-500 to-pink-500">
+                                            <i class="fas fa-book text-lg relative top-3.5 text-white"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -99,87 +100,149 @@
             </div>
         </div>
     </div>
+    
 
-    <!-- Emploi du temps -->
+    <!-- Statistiques détaillées par classe -->
     <div class="w-full max-w-full px-3 mb-6">
         <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
             <div class="flex-auto p-4">
-                <h6 class="mb-4">Cours d'aujourd'hui ({{ now()->locale('fr')->dayName }})</h6>
-                @if($upcomingSchedules->isEmpty())
-                    <p class="text-center text-gray-500">Aucun cours prévu pour aujourd'hui</p>
-                @else
-                    <div class="flex gap-4">
-                        @foreach($upcomingSchedules as $schedule)
-                        <div class="flex items-center p-4 bg-gray-50 rounded-xl w-2/5 mx-4">
-                            <div class="w-12 h-12 rounded-lg bg-gradient-fuchsia flex items-center justify-center mr-4">
-                                <i class="fas fa-clock text-white"></i>
-                            </div>
-                            <div>
-                                <h6 class="mb-1 text-sm">{{ $schedule->subject->name }}</h6>
-                                <div class="text-xs text-gray-600">
-                                    <p>{{ Carbon\Carbon::parse($schedule->start_time)->format('H:i') }} - {{ Carbon\Carbon::parse($schedule->end_time)->format('H:i') }}</p>
-                                    <p>{{ $schedule->teacher->first_name }} {{ $schedule->teacher->last_name }}</p>
-                                    <p>{{ $schedule->class->name }} | {{ $schedule->room }}</p>
+                <div class="p-0">
+                    <h6 class="mb-4 text-lg font-bold text-gray-800">Répartition par Classes</h6>
+                    
+                    @foreach(['CI', 'CP', 'CE1', 'CE2', 'CM1', 'CM2'] as $level)
+                        @if( $studentsPerClass?->get($level)->count() > 0)
+                            <div class="mb-6">
+                                <!-- En-tête du niveau -->
+                                <div class="flex items-center mb-3 p-3 bg-gradient-to-r from-indigo-50 to-blue-50 rounded-lg border-l-4 border-indigo-500">
+                                    <div class="flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500 text-white font-bold text-sm mr-3">
+                                        {{ $level }}
+                                    </div>
+                                    <div>
+                                        <h6 class="font-semibold text-gray-800 mb-1">Niveau {{ $level }}</h6>
+                                        <p class="text-xs text-gray-600">
+                                            {{ $studentsPerClass->get($level)->count() }} {{ $studentsPerClass->get($level)->count() > 1 ? 'classes' : 'classe' }} - 
+                                            {{ $studentsPerClass->get($level)->sum('student_count') }} {{ $studentsPerClass->get($level)->sum('student_count') > 1 ? 'élèves' : 'élève' }}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Liste des classes du niveau -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ml-4">
+                                    @foreach($studentsPerClass->get($level) as $class)
+                                        <div class="p-4 bg-gray-50 rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-200">
+                                            <div class="flex items-center justify-between mb-2">
+                                                <div class="flex items-center">
+                                                    <a href="{{route('class-details', $class->id) }}" class="w-8 h-8 rounded-full bg-gradient-to-r from-blue-400 to-indigo-500 flex items-center justify-center text-white text-xs font-bold mr-3">
+                                                        {{ substr($class->name, -1) }}
+                                                    </a>
+                                                    <div>
+                                                        <h6 class="font-semibold text-gray-800 text-sm">{{ $class->name }}</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="text-right">
+                                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                                        {{ $class->student_count }} élèves
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Informations sur l'enseignant -->
+                                            <div class="flex items-center text-xs text-gray-600 mt-2 gap-2">
+                                                <i class="fas fa-user-tie mr-2 text-gray-400"></i>
+                                                <span class="font-bold me-2">Enseignants : </span>
+                                                @if($class->teacher)
+
+                                                    <span class="font-medium"> {{ $class->teacher->first_name }} {{ $class->teacher->last_name }}</span>
+                                                @else
+                                                    <span class="italic text-gray-500">Aucun enseignant assigné</span>
+                                                @endif
+                                            </div>
+
+                                            <!-- Barre de progression basée sur la capacité -->
+                                            <div class="mt-3">
+                                                @php
+                                                    $capacity = 35; // Capacité max par classe
+                                                    $percentage = min(($class->student_count / $capacity) * 100, 100);
+                                                    $colorClass = $percentage < 70 ? 'bg-green-500' : ($percentage < 90 ? 'bg-yellow-500' : 'bg-red-500');
+                                                @endphp
+                                                <div class="flex items-center justify-between text-xs text-gray-600 mb-1">
+                                                    <span>Taux de remplissage</span>
+                                                    <span>{{ number_format($percentage, 1) }}%</span>
+                                                </div>
+                                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                                    <div class="h-2 rounded-full {{ $colorClass }}" style="width: {{ $percentage }}%"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
-                        </div>
-                        @endforeach
-                    </div>
-                @endif
+                        @endif
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Statistiques détaillées -->
+    <!-- Résumé par niveau -->
     <div class="w-full max-w-full px-3 mb-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Classes les plus nombreuses -->
-            <div class=" mt-4 relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-                <div class="flex-auto p-4">
-                    <h6 class="mb-4">Classes les plus nombreuses</h6>
-                    @foreach($classesWithMostStudents as $class)
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-gradient-fuchsia flex items-center justify-center mr-4">
-                            <i class="fas fa-users text-white"></i>
-                        </div>
-                        <div class="flex-grow">
-                            <h6 class="mb-1 text-sm">{{ $class->name }}</h6>
-                            <div class="flex items-center">
-                                <div class="flex-grow">
-                                    <div class="h-1 bg-gray-200 rounded">
-                                        <div class="h-1 rounded bg-gradient-fuchsia" style="width: {{ ($class->students_count / $totalStudents) * 100 }}%"></div>
-                                    </div>
-                                </div>
-                                <span class="ml-2 text-xs text-gray-600">{{ $class->students_count }} étudiants</span>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-
-            <!-- Professeurs avec le plus de matières -->
-            <div class="mt-4 relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-                <div class="flex-auto p-4">
-                    <h6 class="mb-4">Professeurs avec le plus de matières</h6>
-                    @foreach($teachersWithMostSubjects as $teacher)
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-gradient-fuchsia flex items-center justify-center mr-4">
-                            <i class="fas fa-user-tie text-white"></i>
-                        </div>
-                        <div class="flex-grow">
-                            <h6 class="mb-1 text-sm">{{ $teacher->first_name }} {{ $teacher->last_name }}</h6>
-                            <div class="flex items-center">
-                                <div class="flex-grow">
-                                    <div class="h-1 bg-gray-200 rounded">
-                                        <div class="h-1 rounded bg-gradient-fuchsia" style="width: {{ ($teacher->subjects_count / $totalSubjects) * 100 }}%"></div>
-                                    </div>
-                                </div>
-                                <span class="ml-2 text-xs text-gray-600">{{ $teacher->subjects_count }} matières</span>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
+        <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
+            <div class="flex-auto p-4">
+                <h6 class="mb-4 text-lg font-bold text-gray-800">Résumé par Niveau</h6>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 font-semibold">Niveau</th>
+                                <th scope="col" class="px-6 py-3 font-semibold text-center">Classes</th>
+                                <th scope="col" class="px-6 py-3 font-semibold text-center">Total Élèves</th>
+                                <th scope="col" class="px-6 py-3 font-semibold text-center">Moyenne/Classe</th>
+                                <th scope="col" class="px-6 py-3 font-semibold text-center">Statut</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(['CI', 'CP', 'CE1', 'CE2', 'CM1', 'CM2'] as $level)
+                                @php
+                                    $levelClasses = $studentsPerClass->get($level) ?? collect();
+                                    $totalStudents = $levelClasses->sum('student_count');
+                                    $classCount = $levelClasses->count();
+                                    $average = $classCount > 0 ? round($totalStudents / $classCount, 1) : 0;
+                                @endphp
+                                <tr class="bg-white border-b hover:bg-gray-50">
+                                    <td class="px-6 py-4 font-medium text-gray-900">
+                                        <div class="flex items-center">
+                                            <div class="w-8 h-8 rounded-full bg-gradient-to-r from-indigo-400 to-purple-500 flex items-center justify-center text-white text-xs font-bold mr-3">
+                                                {{ $level }}
+                                            </div>
+                                            <span class="font-semibold">{{ $level }}</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 text-center">
+                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                                            {{ $classCount }}
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 text-center font-semibold">{{ $totalStudents }}</td>
+                                    <td class="px-6 py-4 text-center">{{ $average }}</td>
+                                    <td class="px-6 py-4 text-center">
+                                        @if($average < 25)
+                                            <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                                                <i class="fas fa-exclamation-triangle mr-1"></i>Sous-peuplé
+                                            </span>
+                                        @elseif($average > 32)
+                                            <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                                                <i class="fas fa-users mr-1"></i>Surpeuplé
+                                            </span>
+                                        @else
+                                            <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                                                <i class="fas fa-check-circle mr-1"></i>Optimal
+                                            </span>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

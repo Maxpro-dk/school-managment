@@ -91,7 +91,7 @@
 
             </div>
             <span
-              class="{{ (Request::is('rtl') ? 'mr-1' : 'ml-1') }} duration-300 opacity-100 pointer-events-none ease-soft">Classes</span>
+              class="{{ (Request::is('rtl') ? 'mr-1' : 'ml-1') }} duration-300 opacity-100 pointer-events-none ease-soft">Classes scolaires</span>
           </a>
         </li>
 
@@ -157,7 +157,7 @@
 
             </div>
             <span
-              class="{{ (Request::is('rtl') ? 'mr-1' : 'ml-1') }} duration-300 opacity-100 pointer-events-none ease-soft">Liste des étudiants</span>
+              class="{{ (Request::is('rtl') ? 'mr-1' : 'ml-1') }} duration-300 opacity-100 pointer-events-none ease-soft">Liste des Écoliers</span>
           </a>
         </li>
 

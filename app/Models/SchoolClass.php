@@ -16,16 +16,24 @@ class SchoolClass extends Model
         'name',
         'level',
         'academic_year',
+        'teacher_id', // Foreign key for the class teacher
     ];
 
     // Relationships
     public function students(): HasMany
     {
-        return $this->hasMany(Student::class, 'class_id');
+        return $this->hasMany(Student::class, 'school_class_id');
     }
 
     public function schedules(): HasMany
     {
-        return $this->hasMany(Schedule::class, 'class_id');
+        return $this->hasMany(Schedule::class, 'school_class_id');
     }
+
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class, 'teacher_id');
+    }
+
+
 } 

@@ -3,8 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Teacher extends Model
@@ -16,17 +15,15 @@ class Teacher extends Model
         'last_name',
         'email',
         'phone',
-        'specialty',
+        'diploma',
+        'address',
+        'birth_date',
     ];
 
     // Relationships
-    public function subjects(): BelongsToMany
+    public function schoolClass()
     {
-        return $this->belongsToMany(Subject::class, 'subject_teacher');
+        return $this->belongsTo(SchoolClass::class);
     }
 
-    public function schedules(): HasMany
-    {
-        return $this->hasMany(Schedule::class);
-    }
 } 

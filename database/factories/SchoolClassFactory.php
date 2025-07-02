@@ -11,23 +11,12 @@ class SchoolClassFactory extends Factory
 
     public function definition()
     {
-        $levels = [
-            'Licence 1', 'Licence 2', 'Licence 3',
-            'Master 1', 'Master 2'
-        ];
-
-        $specialties = [
-            'Informatique',
-            'Génie Civil',
-            'Gestion',
-            'Agronomie',
-            'Sciences Économiques',
-            'Droit'
-        ];
-
+        $levels = ['CI', 'CP', 'CE1', 'CE2', 'CM1', 'CM2'];
+        $level = $this->faker->randomElement($levels);
+        
         return [
-            'name' => $this->faker->randomElement($levels) . ' ' . $this->faker->randomElement($specialties),
-            'level' => $this->faker->randomElement($levels),
+            'name' => $level . ' ' . $this->faker->randomLetter(),
+            'level' => $level,
             'academic_year' => '2023-2024',
         ];
     }

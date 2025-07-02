@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use App\Models\Teacher;
-use App\Models\Subject;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -20,9 +19,8 @@ class Teachers extends Component
     public $email;
     public $phone;
     public $address;
-    public $specialty;
-    public $subjects = [];
-    public $selectedSubjects = [];
+    public $diploma;
+    public $birth_date;
 
     protected $rules = [
         'first_name' => 'required|min:2',
@@ -30,8 +28,8 @@ class Teachers extends Component
         'email' => 'required|email|unique:teachers,email',
         'phone' => 'required|string',
         'address' => 'required|string',
-        'specialty' => 'required|string',
-        'selectedSubjects' => 'required|array|min:1',
+        'diploma' => 'required|string',
+        'birth_date' => 'required|date',
     ];
 
     protected $messages = [
@@ -44,15 +42,10 @@ class Teachers extends Component
         'email.unique' => 'Cette adresse email est déjà utilisée',
         'phone.required' => 'Le téléphone est requis',
         'address.required' => 'L\'adresse est requise',
-        'specialty.required' => 'La spécialité est requise',
-        'selectedSubjects.required' => 'Veuillez sélectionner au moins une matière',
-        'selectedSubjects.min' => 'Veuillez sélectionner au moins une matière',
+        'diploma.required' => 'Le diplôme est requis',
+        'birth_date.required' => 'La date de naissance est requise',
+        'birth_date.date' => 'La date de naissance doit être une date valide',
     ];
-
-    public function mount()
-    {
-        $this->subjects = Subject::all();
-    }
 
     public function updatingSearch()
     {
@@ -75,7 +68,7 @@ class Teachers extends Component
     public function create()
     {
         $this->resetValidation();
-        $this->reset(['first_name', 'last_name', 'email', 'phone', 'address', 'specialty', 'selectedSubjects']);
+        $this->reset(['first_name', 'last_name', 'email', 'phone', 'address', 'diploma', 'birth_date']);
         $this->editMode = false;
         $this->showModal = true;
     }
@@ -91,8 +84,8 @@ class Teachers extends Component
         $this->email = $teacher->email;
         $this->phone = $teacher->phone;
         $this->address = $teacher->address;
-        $this->specialty = $teacher->specialty;
-        $this->selectedSubjects = $teacher->subjects->pluck('id')->toArray();
+        $this->diploma = $teacher->diploma;
+        $this->birth_date = $teacher->birth_date;
         $this->showModal = true;
     }
 
@@ -112,31 +105,30 @@ class Teachers extends Component
                 'email' => $this->email,
                 'phone' => $this->phone,
                 'address' => $this->address,
-                'specialty' => $this->specialty,
+                'diploma' => $this->diploma,
+                'birth_date' => $this->birth_date,
             ]);
-            $teacher->subjects()->sync($this->selectedSubjects);
             flash()->success('Professeur mis à jour avec succès.');
         } else {
-            $teacher = Teacher::create([
+            Teacher::create([
                 'first_name' => $this->first_name,
                 'last_name' => $this->last_name,
                 'email' => $this->email,
                 'phone' => $this->phone,
                 'address' => $this->address,
-                'specialty' => $this->specialty,
+                'diploma' => $this->diploma,
+                'birth_date' => $this->birth_date,
             ]);
-            $teacher->subjects()->attach($this->selectedSubjects);
             flash()->success('Professeur créé avec succès.');
         }
 
         $this->showModal = false;
-        $this->reset(['first_name', 'last_name', 'email', 'phone', 'address', 'specialty', 'selectedSubjects']);
+        $this->reset(['first_name', 'last_name', 'email', 'phone', 'address', 'diploma', 'birth_date']);
     }
 
     public function delete($id)
     {
         $teacher = Teacher::find($id);
-        $teacher->subjects()->detach();
         $teacher->delete();
         flash()->success('Professeur supprimé avec succès.');
     }
@@ -145,6 +137,6 @@ class Teachers extends Component
     {
         $this->showModal = false;
         $this->resetValidation();
-        $this->reset(['first_name', 'last_name', 'email', 'phone', 'address', 'specialty', 'selectedSubjects']);
+        $this->reset(['first_name', 'last_name', 'email', 'phone', 'address', 'diploma', 'birth_date']);
     }
-} 
+}

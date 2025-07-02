@@ -17,11 +17,7 @@ class Subject extends Model
         'description',
     ];
 
-    // Relationships
-    public function teachers(): BelongsToMany
-    {
-        return $this->belongsToMany(Teacher::class, 'subject_teacher');
-    }
+
 
     public function schedules(): HasMany
     {
