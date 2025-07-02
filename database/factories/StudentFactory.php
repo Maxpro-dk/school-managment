@@ -41,7 +41,7 @@ class StudentFactory extends Factory
             'birth_date' => $this->faker->dateTimeBetween("-{$ageRange['max']} years", "-{$ageRange['min']} years"),
             'gender' => $this->faker->randomElement(['M', 'F']),
             'registration_number' => $registrationYear . str_pad($registrationNumber++, 4, '0', STR_PAD_LEFT),
-            'class_id' => $class ? $class->id : SchoolClass::factory(),
+            'school_class_id' => $class ? $class->id : SchoolClass::factory(),
             'email' => null, // Les élèves du primaire n'ont pas d'email
             'phone' => null, // Les élèves du primaire n'ont pas de téléphone
             'address' => $this->faker->randomElement([
